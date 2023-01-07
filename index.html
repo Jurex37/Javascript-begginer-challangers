@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Starter</title>
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+
+    <!-- styles -->
+
+    <style>
+        table, td{
+            border: 1px solid blue;
+            border-collapse: collapse;
+        }
+
+        td{
+            width: 50px;
+            font-size: 25px;
+            text-align: center;
+        }
+
+    </style>
+   
+  </head>
+  <body>
+    
+    <h1>1. Print all even numbers from 1-10</h1>
+    <p id="allnumbers"></p>
+    <p id="evenNumbers"></p>
+    <script>
+        var allNumbers= "All numbers: ";
+        var evenNumbers="Even Numbers: ";
+
+        for(var i=1; i<=10; i++){
+            allNumbers+=i+" ";
+            if(i%2==0){
+                evenNumbers+=i+" ";
+            }
+        }
+    
+        document.getElementById("allnumbers").innerHTML=allNumbers;
+        document.getElementById("evenNumbers").innerHTML=evenNumbers;
+        
+    </script>
+    <hr>
+
+    <h1>2. Print a table containing multiplication tables</h1>
+    <table id="myTable"></table>
+
+    <script>
+        var table=document.getElementById("myTable");
+        var output="";
+        for(var i=1; i<=10; i++){
+            output+="<tr>";
+            for(var j=1; j<=10; j++){
+                output+="<td>"+i*j+"</td>"
+            }
+            output+"</tr>"
+        }
+        table.innerHTML=output;
+
+    </script>
+    <hr>
+
+    <h1>3. Create a length converter function</h1>
+    <input type="number" name="kilometer" id="kilometer">
+    <p id="converter"></p>
+    <button onclick="Convert()">Convert</button>
+    <script>
+        function Convert(){
+            km=document.getElementById("kilometer").value;
+            km=parseFloat(km);
+            var m= km*1000;
+            document.getElementById("converter").innerHTML= m;
+            
+
+        }
+    </script>
+
+    <hr>
+
+    <h1>4. Calculate the sum of numbers within an array</h1>
+    <p id="sumNubers"></p>
+
+    <script>
+          var numbers= [8.3, 42.6, 5, 10, 25];
+            var sumNumbers=0;    
+
+        for(var i=0; i<numbers.length; i++){
+            sumNumbers+=numbers[i];
+        }
+
+        document.getElementById("sumNubers").innerHTML=sumNumbers;
+    </script>
+    <hr>
+
+    <h1>5.  Create a function that reverses an array</h1>
+    <p id="reverseArray"></p>
+
+    <script>
+
+    var numbers= [8.3, 42.6, 5, 10, -20, -5.2, 25];
+    reverseData="";
+
+    for(i=numbers.length-1; i>=0;i--){
+        reverseData+=numbers[i]+" ";
+    }
+    document.getElementById("reverseArray").innerHTML=reverseData;
+          
+    </script>
+    <hr>
+
+    <h1>6.  Sort an array from lowest to highest</h1>
+    <p id="lowestToHeighest"></p>
+
+    <script>
+
+    var numbers= [8.3, 42.6, 5, 10, -20, -5.2, 25];
+    var sorted=new Array();
+
+    for(i=0; i<numbers.length; i++){
+        for(j=0; j<numbers.length; j++){
+            if (numbers[j] > numbers[j+1]) { 
+            // console.log("numbers[j]: "+numbers[j]+",  numbers[j+1]: "+ numbers[j+1])
+		        tmp = numbers[j]; 
+              //  console.log("tmp: "+tmp);
+              numbers[j] = numbers[j + 1]; 
+              numbers[j + 1] = tmp; 
+              console.log("stevila[j + 1] = tmp : "+  numbers[j + 1]);
+
+
+            }
+        }
+    }       
+    var line = " "; 
+    for (i = 0; i < numbers.length; i++) {  
+    line += numbers[i] + ", "; }
+
+    document.getElementById("lowestToHeighest").innerHTML=line;
+
+          
+    </script>
+    <hr>
+
+    <h1>7.  Crate function to filter out negative numbers</h1>
+    <p id="filterOut"></p>
+
+    <script>
+
+    var numbers= [8.3,-3, 42.6, 5, 10, -20, -5.2, 25];
+
+
+    for(var i=0; i<numbers.length; i++){
+        parseFloat(numbers[i]);
+        if(numbers[i]<0){
+            numbers.splice(i,1);
+        }
+    }
+
+    var line = " "; 
+    for (i = 0; i < numbers.length; i++) {  
+    line += numbers[i] + ", "; }
+  
+    document.getElementById("filterOut").innerHTML=line;
+
+          
+    </script>
+    <hr>
+    
+    <h1>8. Remove the spaces found in a string</h1>
+    <input type="text" name="txt" id="txt">
+    <button onclick="removeSpaces()">remove</button>     
+    <p id="removeSpaces"></p>
+
+    <script>
+
+        function removeSpaces(){
+            var txt=document.getElementById("txt").value;
+            var outputTxt="";
+
+
+            for(i=0; i<txt.length; i++){
+                console.log(txt[i]);
+                if(txt[i]!=" "){
+                    outputTxt+=txt[i];
+                }
+            }
+            document.getElementById("removeSpaces").innerHTML=outputTxt;
+
+        }
+       
+          
+    </script>
+    <hr>
+
+    <h2>9. Return a Boolean if a number is divisible by 10</h2>
+    <input type="number" name="number" id="number">
+    <button onclick="divisibleByTen()">Devisible</button>
+    <p id="return"></p>
+
+
+    <script>
+
+        function divisibleByTen(){
+            var numb=document.getElementById("number").value;
+
+          document.getElementById("return").innerHTML = Boolean(numb%10==0);
+    
+        }
+    </script>
+    <hr>
+
+    <h2>10. Return the number of vowels in a string</h2>
+<input type="text" name="text" id="text">
+<button onclick="numberOfVowels()">Check</button>
+<p id="result"></p>
+
+
+<script>    
+
+    function numberOfVowels(){
+        var description=document.getElementById("text").value;
+        var vowels="aeiouAEIOU";
+        counter=0;
+
+        for(i=0; i<description.length; i++){
+            for(j=0; j<vowels.length; j++){
+               console.log(vowels[j]);
+                if(vowels[j]==description[i]){
+                    counter++;
+                }
+        }
+       
+        }
+        document.getElementById("result").innerHTML=counter;
+        }
+
+
+
+</script>
+
+
+
+  </body>
+</html>
